@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>music generation</title>
+</head>
+ 
+<body> 
+	<br>
+    <h1 align="center">Music Generator Using Deep Learning</h1>
+    <br>	
+    <ul align="center">
+      <midi-player
+      src="{{filepath}}"
+      sound-font visualizer="#myVisualizer">
+      </midi-player>
+      <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+      <form style="padding-top:5px;"></form>
+      <a href='{{filepath}}' download='{{file}}'>download</a>
+      </form>
+      <form style="padding-top:10px;">
+        <button onClick="location.reload();" style="WIDTH: 70pt; HEIGHT: 30pt; font-size: 90%;">make new</button>
+      </form>
+    </ul>
+<script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script>
+</body>
+<footer align='center'>Powerd by <strong>© 2022 AI 08 bahk kyungmin</strong></footer>
+</html>
