@@ -18,16 +18,16 @@
 
 리스트의 곡은 빠르고 화려하다는 특징을 가지고 있는 만큼 학습할 수 있는 음의 밀도가 높고, 비교적 작곡가의 느낌이나 특징이 잘 드러나 있어 학습에 적절하다고 생각했습니다.
 
-> [Lacrimosa](https://www.youtube.com/watch?v=rKl4B75td70)
-[Schubert/Liszt - Auf dem Wasser zu singen](https://www.youtube.com/watch?v=hrOxzR5VvYk)
-[Mazeppa](https://www.youtube.com/watch?v=K9BQ1ylApto)
-[Transcendental Étude No. 10 in F minor](https://www.youtube.com/watch?v=uDbZ-AcgmDE)
-[Mephisto Waltz No. 1](https://www.youtube.com/watch?v=6fiDT1ZkdYo)
-[Hungarian Rhapsody No. 2](https://www.youtube.com/watch?v=wkNccP146Hk)
-[Paganini Liszt Etude No. 6](https://www.youtube.com/watch?v=7Blf8Y527DY)
-[Consolation No. 3 in D Flat Major S 172](https://www.youtube.com/watch?v=CS58YQaVIaA)
-[BeethovenLiszt 5th Symphony](https://www.youtube.com/watch?v=ANTk-mX-G4Q)
-[Liebestraum(dream of love)](https://www.youtube.com/watch?v=5sVNk-fSKRQ)
+> [Lacrimosa](https://www.youtube.com/watch?v=rKl4B75td70)  
+[Schubert/Liszt - Auf dem Wasser zu singen](https://www.youtube.com/watch?v=hrOxzR5VvYk)  
+[Mazeppa](https://www.youtube.com/watch?v=K9BQ1ylApto)  
+[Transcendental Étude No. 10 in F minor](https://www.youtube.com/watch?v=uDbZ-AcgmDE)  
+[Mephisto Waltz No. 1](https://www.youtube.com/watch?v=6fiDT1ZkdYo)  
+[Hungarian Rhapsody No. 2](https://www.youtube.com/watch?v=wkNccP146Hk)  
+[Paganini Liszt Etude No. 6](https://www.youtube.com/watch?v=7Blf8Y527DY)  
+[Consolation No. 3 in D Flat Major S 172](https://www.youtube.com/watch?v=CS58YQaVIaA)  
+[BeethovenLiszt 5th Symphony](https://www.youtube.com/watch?v=ANTk-mX-G4Q)  
+[Liebestraum(dream of love)](https://www.youtube.com/watch?v=5sVNk-fSKRQ)  
 > 
 
 ## 제작 과정, 사용기술
