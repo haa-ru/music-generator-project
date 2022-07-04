@@ -97,11 +97,11 @@
 
 [ index.html ]
 
-![1.png](/Users/haru/dev/mg_/img/1.png)
+![1.png](/img/1.png)
 
 [ output.html ]
 
-![2.png](/Users/haru/dev/mg_/img/2.png)
+![2.png](/img/2.png)
 
 ## 한계점 / 개선방향
 
