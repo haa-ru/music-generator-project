@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
     <head>
+        <link rel="stylesheet" href="css.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,14 +11,18 @@
     <body> 
         <br>
         <h1 align="center">Music Generator</h1>
-        <br>
-        <ul align="center">
-            <form methode="GET" action="/load">
-                <button style="WIDTH: 60pt; HEIGHT: 30pt; font-size: 90%;">make</button>
-            </form>
-        </ul>
+        <div align="center">
+            <form name="generator" methode="GET" action="/generator"></form>
+            <img style="width:30%; max-width:260px;" src="/static/loading.gif"></img> <!--static폴더 안의 파일만 읽을 수 있음-->
+            <h3>Loadding</h3>
+        </div>
+        <br><br>
     </body>
-    
+
     <footer align='center'>Powerd by <strong>© 2022 AI 08 bahk kyungmin</strong></footer>
+    
+    <script>
+        document.generator.submit();
+    </script>
 
 </html>

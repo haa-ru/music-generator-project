@@ -1,15 +1,28 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from flask import send_file
+
+
 app = Flask(__name__)
+
+# main page
 
 
 @app.route('/')
 def main():
-    return render_template("index.html")
-@app.route('/output')#, methods=['GET','POST'])
-def output():
-    import pickle 
+  return render_template("index.html")
 
-    import numpy as np 
+# loading page
+@app.route('/load')
+def load():
+  return render_template("load.html")
+
+# generator page
+@app.route('/generator')
+def generator():
+
+    import pickle
+
+    import numpy as np
 
     # midi파일 다룰때 사용
     from music21 import instrument, note, chord, stream
@@ -22,10 +35,8 @@ def output():
 
     model = load_model('./listLSTM.h5')
 
-
-    with open('./notes.pkl','rb') as f:
+    with open('./notes.pkl', 'rb') as f:
       notes = pickle.load(f)
-
 
     # 모델출력 가짓수를 정하기 위해 (set함수는 중복되는 원소는 한번만 씀)
     n_vocab = (len(set(notes)))
@@ -34,10 +45,11 @@ def output():
     pitchnames = sorted(set(item for item in notes))
 
     # Pitch를 정수에 매핑하는 딕셔너리 자료형 생성
-    note_to_int = dict((note, number) for number, note in enumerate(pitchnames))
+    note_to_int = dict((note, number)
+                       for number, note in enumerate(pitchnames))
 
     # 시퀀스 길이
-    seq_len = 100 
+    seq_len = 100
 
     # LSTM모델의 입출력(pitch를 정수로 바꿈)이 될 배열
     net_in = []
@@ -50,9 +62,8 @@ def output():
       seq_out = notes[i + seq_len]
 
       # 문자열 -> 정수
-      net_in.append([note_to_int[char] for char in seq_in]) 
+      net_in.append([note_to_int[char] for char in seq_in])
       net_out.append(note_to_int[seq_out])
-
 
     # LSTM 모델 입출력에 맞게 Dataset 전처리
     # 시퀀스 길이(100) 만큼을 빼고 반복했으므로 100개 적은 패턴이 생긴다
@@ -74,7 +85,7 @@ def output():
     net_in = []
     output = []
     # 시퀀스 길이
-    seq_len = 100 
+    seq_len = 100
     for i in range(0, len(notes) - seq_len, 1):
       seq_in = notes[i:i + seq_len]
       seq_out = notes[i + seq_len]
@@ -90,8 +101,8 @@ def output():
     pattern = net_in[start]
 
     # 정수를 다시 note로 바꾸기 위한 딕셔너리 자료형
-    int_to_note = dict((number, note) for number, note in enumerate(pitchnames))
-
+    int_to_note = dict((number, note)
+                       for number, note in enumerate(pitchnames))
 
     # LSTM 모델이 만든 출력값을 저장하기 위한 빈 리스트
     pred_out = []
@@ -116,24 +127,24 @@ def output():
       pattern.append(index)
       pattern = pattern[1:len(pattern)]
 
-    offset = 0 
+    offset = 0
 
     output_notes = []
 
     for pattern in pred_out:
         # chord일때
         if ('.' in pattern) or pattern.isdigit():
-            notes_in_chord = pattern.split('.')
-            notes = [] 
+          notes_in_chord = pattern.split('.')
+          notes = []
 
-            for current_note in notes_in_chord:
-                new_note = note.Note(int(current_note)) 
-                new_note.storedInstrument = instrument.Piano() 
-                notes.append(new_note) 
+          for current_note in notes_in_chord:
+            new_note = note.Note(int(current_note))
+            new_note.storedInstrument = instrument.Piano()
+            notes.append(new_note)
 
-            new_chord = chord.Chord(notes)
-            new_chord.offset = offset 
-            output_notes.append(new_chord)
+          new_chord = chord.Chord(notes)
+          new_chord.offset = offset
+          output_notes.append(new_chord)
 
         # note일때
         else:
@@ -147,17 +158,26 @@ def output():
     # midi파일 만들 정보 변수에저장
     midi_stream = stream.Stream(output_notes)
 
-    
     import random
     import os
-    num = random.randrange(1,1001)
+
+    num = random.randrange(1, 1001)
     num = str(num)
 
     path = os.getcwd()
+    global filepath
     filepath = path+'/output/'+num+'.mid'
     midi_stream.write('midi', fp=filepath)
     return render_template("output.html", filepath=filepath, file=num+'.mid')
 
+
+@app.route('/download_file')
+def download_file():
+    return send_file(filepath,
+                     attachment_filename='midi.mid',  # 다운받아지는 파일 이름.
+                     as_attachment=True)
+#Referance: https://frhyme.github.io/python-libs/file_download_with_flask/
+
+
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=9900)
-
